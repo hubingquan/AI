@@ -26,7 +26,7 @@ if inputfiles is None or outfile is None:
 #print "rows:" + bytes(rows) + "cols:" + bytes(cols) + "channels:" + bytes(channels)
 #print "rows:" + bytes(rows) + "cols:" + bytes(cols)
 fileSave = open(outfile,'wb')
-fileSave.write("static unsigned char handpose_data[4][rows*cols] = {\n")
+fileSave.write('{}[{}][{}] = {{\n'.format("static unsigned char handpose_data", file_num-2, 29*29))
 
 '''
 for step in range(0,rows):
