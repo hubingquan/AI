@@ -7,6 +7,7 @@ import cv2
 import sys
 import numpy as np
 import struct
+import string
 
 inputfiles = sys.argv[1:-1]
 outfile = sys.argv[-1]
@@ -47,8 +48,9 @@ for _file in inputfiles:
     cols = image.shape[1]
     for step in range(0,rows):
         for step2 in range(0,cols):
-            #str = bytes(image[step,step2]) + ','
-            fileSave.write(bytes(image[step,step2]))
+            #str = bytes(image[step,step2]) 
+            str = '{0:3d}'.format(image[step,step2])
+            fileSave.write(str)
             if step == rows-1 and step2 == cols -1:
                 fileSave.write(" },\n");
             else:
