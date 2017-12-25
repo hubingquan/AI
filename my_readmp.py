@@ -39,6 +39,7 @@ for step in range(0,rows):
 '''
 for _file in inputfiles:
     fileSave.write("{\n")
+    print _file
     image = cv2.imread(_file,cv2.IMREAD_GRAYSCALE)
     print type(image) 
     print image.shape, image.size, image.dtype
@@ -48,11 +49,11 @@ for _file in inputfiles:
         for step2 in range(0,cols):
             #str = bytes(image[step,step2]) + ','
             fileSave.write(bytes(image[step,step2]))
-            if step != rows-1 or step2 != cols -1:
-                fileSave.write(",")
+            if step == rows-1 and step2 == cols -1:
+                fileSave.write(" },\n");
             else:
-                fileSave.write("},\n");
-            fileSave.write("\n");
-    fileSave.write("};\n");
+                fileSave.write(",")
+        fileSave.write("\n");
 
+fileSave.write("};\n");
 fileSave.close()
